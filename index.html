@@ -1,0 +1,39 @@
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Maps Embed API</title>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_YoJ5Ei748ChtZW3_5eQzdDhfU6SS7s0&callback=initMap"
+      async
+      defer
+    ></script>
+    <script>
+      function initMap() {
+        var myLatLng = { lat: 37.7749, lng: -122.4194 };
+
+        var map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 13,
+          center: myLatLng,
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: "Hello World!",
+        });
+      }
+    </script>
+  </body>
+</html>
+```
