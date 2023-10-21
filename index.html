@@ -36,9 +36,6 @@
   </body>
 </html> -->
 
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +47,7 @@
       width: 100%;
     }
 
-    /* Style the dropdown menu */
+    /* Style the dropdown menu container */
     #dropdown {
       position: absolute;
       top: 10px;
@@ -62,10 +59,10 @@
       font-family: Arial, sans-serif;
       font-size: 14px;
     }
-    
+
     /* Style the dropdown menu options */
-    #dropdown option {
-      padding: 5px;
+    #dropdown select {
+      margin: 5px;
     }
   </style>
 </head>
@@ -74,20 +71,57 @@
   <!-- The map container -->
   <div id="map"></div>
 
-  <!-- The dropdown menu -->
-  <select id="dropdown">
-    <option value="all">Show all</option>
-    <option value="0">San Francisco</option>
-    <option value="1">New York</option>
-    <option value="2">Los Angeles</option>
-    <option value="3">Chicago</option>
-    <option value="4">Houston</option>
-    <option value="5">Phoenix</option>
-    <option value="6">Philadelphia</option>
-    <option value="7">San Antonio</option>
-    <option value="8">San Diego</option>
-    <option value="9">Dallas</option>
-  </select>
+  <!-- The dropdown menu container -->
+  <div id="dropdown">
+    <!-- The company id dropdown menu -->
+    <select id="company">
+      <option value="a">a</option>
+      <option value="b">b</option>
+      <option value="c">c</option>
+    </select>
+
+    <!-- The vehicle id dropdown menu -->
+    <select id="vehicle">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+
+    <!-- The year dropdown menu -->
+    <select id="year">
+      <option value="2023">2023</option>
+      <option value="2024">2024</option>
+    </select>
+
+    <!-- The month dropdown menu -->
+    <select id="month">
+      <option value="01">01</option>
+      <option value="02">02</option>
+      <option value="03">03</option>
+      <option value="04">04</option>
+      <option value="05">05</option>
+      <option value="06">06</option>
+      <option value="07">07</option>
+      <option value="08">08</option>
+      <option value="09">09</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+
+    <!-- The day dropdown menu -->
+    <select id="day">
+      <!-- Use a loop to generate the options for each day of the month -->
+      <% for (var i = 1; i <= 31; i++) { %>
+        <!-- Use a ternary operator to add a leading zero if the day is less than 10 -->
+        <option value="<%= i < 10 ? '0' + i : i %>"><%= i %></option>
+      <% } %>
+    </select>
+
+    <!-- The submit button -->
+    <button id="submit">Submit</button>
+
+  </div>
 
   <!-- Load the Google Maps JavaScript API script -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_YoJ5Ei748ChtZW3_5eQzdDhfU6SS7s0&callback=initMap" async></script>
