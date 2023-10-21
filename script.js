@@ -46,28 +46,54 @@ function loadJSONData() {
   xhr.onload = function () {
     // Get the response data as a JSON object
     var data = this.response;
-    console.log(data);
+    // console.log(data);
     // console.log(data[0].lat);
     // Check if the data is valid
-    if (data && data.lat && data.lng && data.name) {
-      // Create a new marker object with the data
-      var marker = new google.maps.Marker({
-        position: { lat: data.lat, lng: data.lng },
+    for (var i = 0; i < data.length; i++) {
+      // 获取当前元素，也就是当前的marker对象
+      var marker = data[i];
+    
+      // 从marker对象中获取坐标和其他属性
+      var lat = marker.lat;
+      var lng = marker.lng;
+      var name = marker.name;
+    
+      // 创建一个google.maps.LatLng对象，表示marker的位置
+      var position = new google.maps.LatLng(lat, lng);
+    
+      // 创建一个google.maps.Marker实例，表示marker在地图上的图标
+      var icon = new google.maps.Marker({
+        position: position,
         map: map,
-        title: data.name,
+        title: name
       });
-      console.log(marker);
-
-      // Clear the previous markers from the map and the array
-      clearMarkers();
-
-      // Add the new marker to the map and the array
-      markers.push(marker);
-
-      // Set the map center and zoom level to the marker position
-      map.setCenter(marker.getPosition());
-      map.setZoom(8);
+    
+      // 把icon实例添加到markers数组中
+      markers.push(icon);
     }
+    // console.log(icon);
+    map.setCenter(icon.getPosition());
+    map.setZoom(8);
+
+    // if (data && data.lat && data.lng && data.name) {
+    //   // Create a new marker object with the data
+    //   var marker = new google.maps.Marker({
+    //     position: { lat: data.lat, lng: data.lng },
+    //     map: map,
+    //     title: data.name,
+    //   });
+    //   console.log(marker);
+
+    //   // Clear the previous markers from the map and the array
+    //   clearMarkers();
+
+    //   // Add the new marker to the map and the array
+    //   markers.push(marker);
+
+    //   // Set the map center and zoom level to the marker position
+    //   map.setCenter(marker.getPosition());
+    //   map.setZoom(8);
+    // }
   };
   xhr.send();
 }
