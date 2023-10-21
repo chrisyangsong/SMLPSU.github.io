@@ -37,6 +37,8 @@
 </html> -->
 
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,12 +49,45 @@
       height: 400px;
       width: 100%;
     }
+
+    /* Style the dropdown menu */
+    #dropdown {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 5;
+      background-color: white;
+      padding: 5px;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    
+    /* Style the dropdown menu options */
+    #dropdown option {
+      padding: 5px;
+    }
   </style>
 </head>
 <body>
   <h1>Google Maps SDK Web Tutorial</h1>
   <!-- The map container -->
   <div id="map"></div>
+
+  <!-- The dropdown menu -->
+  <select id="dropdown">
+    <option value="all">Show all</option>
+    <option value="0">San Francisco</option>
+    <option value="1">New York</option>
+    <option value="2">Los Angeles</option>
+    <option value="3">Chicago</option>
+    <option value="4">Houston</option>
+    <option value="5">Phoenix</option>
+    <option value="6">Philadelphia</option>
+    <option value="7">San Antonio</option>
+    <option value="8">San Diego</option>
+    <option value="9">Dallas</option>
+  </select>
 
   <!-- Load the Google Maps JavaScript API script -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_YoJ5Ei748ChtZW3_5eQzdDhfU6SS7s0&callback=initMap" async></script>
